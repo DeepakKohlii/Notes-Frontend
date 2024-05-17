@@ -31,7 +31,7 @@ const Note = ({
   note,
   setRefetchAPI,
   refetchaPI,
-  pinnedNotes
+  pinnedNotes,
 }: {
   note: any;
   setRefetchAPI: any;
@@ -48,7 +48,7 @@ const Note = ({
       const token = localStorage.getItem("user");
 
       const response = await axios.put(
-        `http://notes-backend-production-b684.up.railway.app/api/notes/update/${note.id}/`,
+        `https://notes-backend-production-b684.up.railway.app/api/notes/update/${note.id}/`,
         data
       );
       console.log("UPDATED Notes", response.data);
@@ -61,7 +61,7 @@ const Note = ({
   const deleteNote = async () => {
     try {
       const response = await axios.delete(
-        `http://notes-backend-production-b684.up.railway.app/api/notes/delete/${note.id}/`
+        `https://notes-backend-production-b684.up.railway.app/api/notes/delete/${note.id}/`
       );
       setRefetchAPI(!refetchaPI);
     } catch (error: any) {

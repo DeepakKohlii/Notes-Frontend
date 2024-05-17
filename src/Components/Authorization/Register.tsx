@@ -31,13 +31,16 @@ export default function Register() {
     };
 
     try {
-      const response = await fetch("http://notes-backend-production-b684.up.railway.app/api/user/register/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+      const response = await fetch(
+        "https://notes-backend-production-b684.up.railway.app/api/user/register/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -107,7 +110,10 @@ export default function Register() {
               value={formData.password}
               onChange={handleInputChange}
             />
-            <Typography variant="body2" style={{ marginTop: 16,marginBottom:16 }}>
+            <Typography
+              variant="body2"
+              style={{ marginTop: 16, marginBottom: 16 }}
+            >
               By clicking <strong>Register</strong>, you will register and then
               you can login and use the app.
             </Typography>

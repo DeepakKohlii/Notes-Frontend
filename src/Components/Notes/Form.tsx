@@ -71,7 +71,7 @@ const Form = ({
       const newData = { title, content: text, bg_color: color };
 
       const response = await axios.post(
-        "http://notes-backend-production-b684.up.railway.app/api/notes/",
+        "https://notes-backend-production-b684.up.railway.app/api/notes/",
         newData
       );
 

@@ -13,14 +13,15 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import axios from "../../utils/axios";
 
 const Archives = () => {
-  const [archivedNotes, setArchivedNotes] = useState([]); 
+  const [archivedNotes, setArchivedNotes] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
   const [refetchaPI, setRefetchAPI] = useState(false);
 
   const fetchnotes = async () => {
     try {
-
-      const response = await axios.get("http://notes-backend-production-b684.up.railway.app/notes/");
+      const response = await axios.get(
+        "https://notes-backend-production-b684.up.railway.app/notes/"
+      );
       setAllNotes(response.data);
     } catch (error: any) {
       console.error("Error fetching user notes:", error.message);

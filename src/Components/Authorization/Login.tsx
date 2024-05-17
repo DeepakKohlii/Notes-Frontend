@@ -15,6 +15,8 @@ import { useLocalStorage } from "../../Hooks/useLocalStorage";
 import { useAuth } from "../../Hooks/useAuth";
 import { Password } from "@mui/icons-material";
 import { Navigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const defaultTheme = createTheme();
 
@@ -107,6 +109,7 @@ export default function Login() {
           </Box>
         </Box>
       </Container>
+      <ToastContainer />
     </ThemeProvider>
   );
 }

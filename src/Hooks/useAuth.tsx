@@ -1,6 +1,8 @@
 import { createContext, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "./useLocalStorage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthContext = createContext(null);
 
@@ -10,13 +12,16 @@ export const AuthProvider = ({ children }: { children: any }) => {
 
   const login = async (data: any) => {
     try {
-      const response = await fetch("http://notes-backend-production-b684.up.railway.app/api/token/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data?.userData),
-      });
+      const response = await fetch(
+        "https://notes-backend-production-b684.up.railway.app/api/token/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data?.userData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Invalid credentials");
@@ -24,14 +29,14 @@ export const AuthProvider = ({ children }: { children: any }) => {
 
       const responseData = await response.json();
 
-      const token = responseData.access
+      const token = responseData.access;
       console.log("Token:", token);
       localStorage.setItem("jwt", token);
       setUser(token);
       navigate("/");
-
     } catch (error: any) {
       console.error("Error logging in:", error.message);
+      toast.error("Please Register and try to login.");
     }
   };
 

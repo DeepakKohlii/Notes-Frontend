@@ -33,7 +33,9 @@ const Notes = () => {
     try {
       const token = localStorage.getItem("user");
 
-      const response = await axios.get("http://notes-backend-production-b684.up.railway.app/api/notes/");
+      const response = await axios.get(
+        "https://notes-backend-production-b684.up.railway.app/api/notes/"
+      );
       const sortedNotes = response.data.reverse();
       setAllNotes(sortedNotes);
       console.log("Notes:", response.data);
@@ -49,7 +51,7 @@ const Notes = () => {
     allNotes.forEach((note) => {
       if (note.is_pinned) {
         pinNotes.push(note);
-      } else if(!note.is_archived) {
+      } else if (!note.is_archived) {
         normalNotes.push(note);
       }
     });
@@ -67,7 +69,7 @@ const Notes = () => {
     const items = reorder(
       notes,
       pinnedNotes,
-      result.source.index,
+      result.source.index
       // result.destination.index
     );
     setNotes(items);
@@ -77,7 +79,7 @@ const Notes = () => {
     <React.Fragment>
       <Form setRefetchAPI={setRefetchAPI} refetchaPI={refetchaPI} />
       {/* <Archives /> */}
-      {notes.length === 0 ? (
+      {allNotes.length === 0 ? (
         <Box
           sx={{
             display: "flex",
