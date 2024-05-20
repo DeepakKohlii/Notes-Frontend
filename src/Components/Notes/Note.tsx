@@ -121,7 +121,11 @@ const Note = ({
       <CardActions
         sx={{ display: "flex", justifyContent: "end", marginLeft: "auto" }}
       >
-        <Tooltip title="Archive">
+        <Tooltip
+          title={
+            isArchived ? "Unarchive" : "Archive"
+          }
+        >
           <IconButton
             sx={{ visibility: showActions ? "visible" : "hidden" }}
             onClick={() => {
